@@ -1,0 +1,35 @@
+.board.board--9 {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* vertical thick lines after col 3 and 6 */
+.board--9 .cell:nth-child(9n + 3),
+.board--9 .cell:nth-child(9n + 6) {
+  border-right-width: 3px;
+  border-right-color: rgba(62, 92, 54, 0.95);
+}
+
+/* horizontal thick lines after row 3 and 6: cells 19-27 and 46-54 */
+.board--9 .cell:nth-child(n + 19):nth-child(-n + 27),
+.board--9 .cell:nth-child(n + 46):nth-child(-n + 54) {
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(62, 92, 54, 0.95);
+}
+
+.board--9 .cell {
+  font-size: 20px;
+  width: 56px;
+  height: 56px;
+}
+
+@media (max-width: 430px) {
+  .board.board--9 {
+    max-width: 100%;
+  }
+  .board--9 .cell {
+    font-size: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -1,0 +1,111 @@
+/* ---------- Interactive cell states ---------- */
+.cell {
+  cursor: pointer;
+}
+
+/* Selected cell: clear but not noisy */
+.cell.selected {
+  outline: 3px solid rgba(74, 102, 61, 0.95);
+  outline-offset: -3px;
+  background: rgba(96, 128, 82, 0.22);
+}
+
+/* Incorrect: red border + light red fill */
+.cell.incorrect {
+  border-color: rgba(211, 51, 51, 0.95) !important;
+  background: rgba(211, 51, 51, 0.10) !important;
+}
+
+/* Hint: strong background highlight (more obvious than border) */
+.cell.hint {
+  background: rgba(255, 230, 150, 0.75) !important;
+  box-shadow: 0 0 0 3px rgba(96, 128, 82, 0.35) inset;
+}
+
+/* Prefilled cells: slightly stronger (if your global.css already styles .fixed,
+   this will just enhance it a bit) */
+.cell.fixed {
+  font-weight: 700;
+}
+
+/* Optional: make editable cells feel clickable */
+.cell:not(.fixed):hover {
+  filter: brightness(0.97);
+}
+
+/* ---------- Game page layout tweaks ---------- */
+/* Center board + controls within the feature card */
+.game-card-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+/* Timer/congrats spacing (font comes from global.css) */
+.timer {
+  margin-top: 4px;
+}
+
+.congrats {
+  margin-top: 6px;
+  font-weight: 800;
+}
+
+/* Make CTA buttons work for <button class="cta-button"> */
+button.cta-button {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+button.cta-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---------- Login/Register layout tweaks ---------- */
+.form-card {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.form-grid input {
+  width: 100%;
+  min-height: 20px;
+  padding: 10px 12px;
+
+  border-radius: 12px;
+  background: rgba(250, 246, 235, 0.95);
+  border: 1.5px solid rgba(96, 128, 82, 0.35);
+
+  font-family: inherit;
+  font-weight: inherit;
+
+  font-size: 18px;
+  line-height: 1.2;
+
+  color: rgba(43, 63, 41, 0.95);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-grid input:focus {
+  border-color: rgba(96, 128, 82, 0.75);
+  box-shadow: 0 0 0 4px rgba(96, 128, 82, 0.18);
+}
+
+.form-grid input::placeholder {
+  color: rgba(43, 63, 41, 0.45);
+}
+
+/* Optional: keep forms from looking too flat on wide screens */
+@media (max-width: 480px) {
+  .form-card {
+    max-width: 100%;
+  }
+}
