@@ -1,6 +1,6 @@
 ## Deliverables
-GitHub repo: <LINK>  
-Render app: <LINK>  
+GitHub repo: https://github.com/lichiaoyu/chiaoyu-li-xinyi-zhang-tianlu-xu-project2  
+Render app: https://chiaoyu-li-xinyi-zhang-tianlu-xu-project2.onrender.com/  
 Video walkthrough: <LINK>  
 Collaborators: Chiao-Yu Li, Xinyi Zhang, Tianlu Xu
 
