@@ -10,7 +10,7 @@ npm run dev
 ## Deliverables
 GitHub repo: https://github.com/lichiaoyu/chiaoyu-li-xinyi-zhang-tianlu-xu-project2  
 Render app: https://chiaoyu-li-xinyi-zhang-tianlu-xu-project2.onrender.com/  
-Video walkthrough: https://youtu.be/nEYTEj1mKXM 
+Video walkthrough: https://youtu.be/nEYTEj1mKXM  
 Collaborators: Chiao-Yu Li, Xinyi Zhang, Tianlu Xu
 
 ## Challenges Faced
