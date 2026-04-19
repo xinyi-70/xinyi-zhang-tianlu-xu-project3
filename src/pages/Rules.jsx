@@ -29,19 +29,13 @@ export default function Rules() {
         <section className="features">
           <div className="rules-card credits-card">
             <h2>Credits</h2>
-            <p>
-              Made by <span className="author-name">Chiao-Yu Li, Xinyi Zhang, Tianlu Xu</span>
-            </p>
 
             <p className="contact-links">
               Email:
-              <a href="mailto:sudoku@gamemail.com" className="contact-link">sudoku@gamemail.com</a>
+              <a href="mailto:example@gamemail.com" className="contact-link"> example@gamemail.com</a>
               <br />
               GitHub:
-              <a href="https://github.com/lichiaoyu/sudoku-project" className="contact-link">github.com/lichiaoyu/sudoku-project</a>
-              <br />
-              LinkedIn:
-              <a href="https://www.linkedin.com/in/sudokugame/" className="contact-link">linkedin.com/in/sudokugame</a>
+              <a href="https://github.com/xinyi-70/xinyi-zhang-tianlu-xu-project3" className="contact-link"> github.com/xinyi-70/xinyi-zhang-tianlu-xu-project3</a>
             </p>
           </div>
         </section>

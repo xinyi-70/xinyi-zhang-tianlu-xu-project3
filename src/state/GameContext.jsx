@@ -8,7 +8,7 @@ const GameContext = createContext(null);
 const STORAGE_KEY = "ally_sudoku_state_v1";
 
 const initialState = {
-  mode: null,                // "easy" | "normal"
+  mode: null,                // "EASY" | "NORMAL"
   size: null,                // 6 | 9
   boxRows: null,             // 2 or 3
   boxCols: null,             // 3
@@ -18,7 +18,9 @@ const initialState = {
   hint: null,                // {r,c} | null
   startedAt: null,           // ms epoch
   elapsedMs: 0,
-  status: "idle",            // "idle" | "playing" | "won"
+  status: "idle",            // "idle" | "playing" | "won" | "completed"
+  gameId: null,
+  createdBy: null,
 };
 
 function deepClone(x) {
@@ -59,6 +61,25 @@ function reducer(state, action) {
         startedAt: Date.now(),
         elapsedMs: 0,
         status: "playing",
+      };
+    }
+
+    case "LOAD_GAME": {
+      return {
+        ...state,
+        mode: action.mode,
+        size: action.size,
+        boxRows: action.boxRows,
+        boxCols: action.boxCols,
+        board: action.board,
+        originalBoard: action.originalBoard,
+        gameId: action.gameId,
+        createdBy: action.createdBy,
+        selected: null,
+        hint: null,
+        startedAt: Date.now(),
+        elapsedMs: 0,
+        status: action.status || "playing",
       };
     }
 
@@ -133,7 +154,7 @@ export function GameProvider({ children }) {
     if (!raw) return;
     try {
       const parsed = JSON.parse(raw);
-      if (parsed && parsed.board && parsed.size && parsed.status) {
+      if (parsed && parsed.board && parsed.size && parsed.status === "playing") {
         dispatch({ type: "LOAD_SAVED", state: parsed });
       }
     } catch {
@@ -150,7 +171,7 @@ export function GameProvider({ children }) {
     // clear after reset is clicked? (they said clear when game over either reset or winner)
     // We'll clear on winner, and also clear when user resets (but reset starts a new playing state),
     // so we clear right before reset via action is not possible here.
-    if (state.status === "won") {
+    if (state.status === "won" || state.status === "completed") {
       window.localStorage.removeItem(STORAGE_KEY);
     }
   }, [state]);

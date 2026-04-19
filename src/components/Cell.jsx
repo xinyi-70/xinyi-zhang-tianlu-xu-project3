@@ -1,13 +1,13 @@
 import { useGame } from "../state/GameContext.jsx";
 
-export default function Cell({ r, c, cell }) {
+export default function Cell({ r, c, cell, readonly }) {
   const { state, dispatch } = useGame();
   const { size, selected, hint, status } = state;
 
   const isSelected = selected && selected.r === r && selected.c === c;
   const isHint = hint && hint.r === r && hint.c === c;
 
-  const disabled = cell.fixed || status !== "playing";
+  const disabled = cell.fixed || status !== "playing" || readonly;
 
   function handleChange(e) {
     if (disabled) return;

@@ -1,6 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../state/AuthContext.jsx";
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -35,17 +44,31 @@ export default function Navbar() {
             </NavLink>
           </li>
 
-          <li className="nav-item">
-            <NavLink to="/login" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
-              <span>Login</span>
-            </NavLink>
-          </li>
-
-          <li className="nav-item">
-            <NavLink to="/register" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
-              <span>Register</span>
-            </NavLink>
-          </li>
+          {user ? (
+            <>
+              <li className="nav-item">
+                <span className="nav-username">{user}</span>
+              </li>
+              <li className="nav-item">
+                <button className="nav-logout-btn" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="nav-item">
+                <NavLink to="/login" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
+                  <span>Login</span>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/register" className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
+                  <span>Register</span>
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>

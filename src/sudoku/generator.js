@@ -59,7 +59,7 @@ function carveUnique(solution, size, boxRows, boxCols, givensTarget) {
 }
 
 export function generatePuzzleUnique(mode) {
-  if (mode === "easy") {
+  if (mode === "EASY") {
     const size = 6;
     const boxRows = 2;
     const boxCols = 3;
@@ -69,7 +69,7 @@ export function generatePuzzleUnique(mode) {
     return { size, boxRows, boxCols, board };
   }
 
-  // normal
+  // NORMAL
   const size = 9;
   const boxRows = 3;
   const boxCols = 3;
