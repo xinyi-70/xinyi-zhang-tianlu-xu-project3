@@ -1,7 +1,7 @@
 ## Deliverables
 
 GitHub repo: [https://github.com/xinyi-70/xinyi-zhang-tianlu-xu-project3](https://github.com/xinyi-70/xinyi-zhang-tianlu-xu-project3)  
-Render app: [https://chiaoyu-li-xinyi-zhang-tianlu-xu-project2.onrender.com/](https://chiaoyu-li-xinyi-zhang-tianlu-xu-project2.onrender.com/)  
+Render app: [https://sudoku-project3.onrender.com](https://sudoku-project3.onrender.com) 
 Video walkthrough: [https://youtu.be/nEYTEj1mKXM](https://youtu.be/nEYTEj1mKXM)  
 Collaborators: Xinyi Zhang, Tianlu Xu  
 
