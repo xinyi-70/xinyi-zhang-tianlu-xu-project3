@@ -186,6 +186,15 @@ body{
   background: var(--green-hover);
 }
 
+.delete-btn {
+  background: rgba(255, 80, 80, 0.85);
+}
+
+.delete-btn:hover {
+  background: rgba(255, 80, 80);
+  transform: translateY(-1px);
+}
+
 .features{
   margin-top: 16px;
   background: var(--bg-cream);

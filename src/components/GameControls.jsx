@@ -39,9 +39,8 @@ export default function GameControls() {
       {/* BONUS: Delete Game (only show if user is creator) */}
       {user && state.createdBy === user && (
         <button
-          className="cta-button"
+          className="cta-button delete-btn"
           onClick={handleDelete}
-          style={{ backgroundColor: 'red' }}
         >
           DELETE
         </button>
