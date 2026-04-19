@@ -2,23 +2,24 @@
 
 ## How to Run
 
-1. Clone the repo and install dependencies:
+### 1. Clone the repo and install dependencies:
 ```bash
 npm install
 ```
 
-2. Create a `.env` file in the root directory:
+### 2. Create a `.env` file in the root directory:
 ```bash
 MONGO_URL=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 PORT=8000
 ```
+Make sure `.env` is included in .gitignore.
 
-3. Start both frontend and backend:
+### 3. Start both frontend and backend:
 ```bash
     npm run devstart
 ```
-Or start separately:
+### Or start separately:
 ```bash
     npm run dev      # frontend only
     npm run server   # backend only
