@@ -29,11 +29,11 @@ This project took approximately 30–35 hours to complete across the team. Time 
 
 ## Bonus Points Accomplished
 
-### Submit Early (3 pts)
+### 1. Submit Early (3 pts)
 Submitted the project at least 48 hours before the deadline.
 
-### Password Encryption (2 pts)
+### 2. Password Encryption (2 pts)
 User passwords are securely hashed using bcrypt before being stored in MongoDB, ensuring that plaintext passwords are never persisted. This is implemented in the register route in `server/routes/user.js`.
 
-### Delete Game (5 pts)
+### 3. Delete Game (5 pts)
 Users who created a game can delete it from the game page via a DELETE button that is only visible to the creator. Deleting a game also removes all associated highscore records, ensuring data consistency. The backend logic is in the DELETE /api/sudoku/:id route in `server/routes/sudoku.js`, and the frontend button is in `src/components/GameControls.jsx`.
