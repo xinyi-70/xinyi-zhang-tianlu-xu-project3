@@ -70,7 +70,7 @@ export default function GamePage() {
           <div className="feature-card game-card-wrap">
             {user && <Timer />}
 
-            {state.status === "won" || state.status === "completed" && (
+            {(state.status === "won" || state.status === "completed") && (
               <p className="congrats">🎉 Congratulations! Puzzle solved.</p>
             )}
 
