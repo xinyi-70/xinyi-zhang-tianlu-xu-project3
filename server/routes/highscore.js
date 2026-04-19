@@ -1,15 +1,16 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import Highscore from '../models/Highscore.js';
+import Game from '../models/Game.js';
+import mongoose from 'mongoose';
 
 const router = express.Router();
-const SECRET = process.env.SESSION_SECRET;
 
 function getUsername(req) {
   const token = req.cookies.token;
   if (!token) return null;
   try {
-    const decoded = jwt.verify(token, SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     return decoded.username;
   } catch {
     return null;
@@ -36,13 +37,17 @@ router.post('/', async (req, res) => {
   const username = getUsername(req);
   if (!username) return res.status(401).json({ error: 'Must be logged in' });
 
-  const { gameId } = req.body;
+  const { gameId, solution } = req.body;
   if (!gameId) return res.status(400).json({ error: 'gameId required' });
-
+  
   try {
-    const existing = await Highscore.findOne({ username, gameId });
+    const existing = await Highscore.findOne({ username, gameId: new mongoose.Types.ObjectId(gameId)});
     if (existing) return res.json({ success: true });
     await Highscore.create({ username, gameId });
+    await Game.findByIdAndUpdate(gameId, {
+      $addToSet: { completedBy: username },
+      $set: { solution: solution }
+    });
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });

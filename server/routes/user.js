@@ -10,7 +10,7 @@ router.get('/isLoggedIn', (req, res) => {
   const token = req.cookies.token;
   if (!token) return res.json({ loggedIn: false });
   try {
-    const decoded = jwt.verify(token, process.env.SESSION_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     res.json({ loggedIn: true, username: decoded.username });
   } catch {
     res.json({ loggedIn: false });
@@ -28,9 +28,10 @@ router.post('/register', async (req, res) => {
     if (existing) {
       return res.status(400).json({ error: 'Username already exists' });
     }
+    // BONUS: Password Encryption (passwords are hashed with bcrypt before storing)
     const hashed = await bcrypt.hash(password, 10);
     await User.create({ username, password: hashed });
-    const token = jwt.sign({ username }, process.env.SESSION_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '24h' });
     res.cookie('token', token, { httpOnly: true });
     res.json({ success: true, username });
   } catch (err) {
@@ -54,7 +55,7 @@ router.post('/login', async (req, res) => {
     if (!match) {
       return res.status(400).json({ error: 'Invalid username or password' });
     }
-    const token = jwt.sign({ username }, process.env.SESSION_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '24h' });
     res.cookie('token', token, { httpOnly: true });
     res.json({ success: true, username });
   } catch (err) {
@@ -63,8 +64,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// DELETE /api/user/logout
-router.delete('/logout', (req, res) => {
+// POST /api/user/logout
+router.post('/logout', (req, res) => {
   res.clearCookie('token');
   res.json({ success: true });
 });
