@@ -1,14 +1,6 @@
 # Sudoku Project 3
 
 ## How to Run
-To use, run `npm install` and then `npm run dev` in the root directory.
-
-```bash
-npm install
-npm run dev
-```
-
-## How to Run
 
 1. Clone the repo and install dependencies:
 ```bash
@@ -26,7 +18,7 @@ PORT=8000
 ```bash
     npm run devstart
 ```
-    Or start separately:
+Or start separately:
 ```bash
     npm run dev      # frontend only
     npm run server   # backend only
